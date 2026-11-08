@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "legit-farmer",
+	"version": "${version}",
+	"name": "Legit Farmer",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/legit-farmer/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.legitfarmer.LegitFarmer"
+		],
+		"client": [
+			"net.legitfarmer.client.LegitFarmerClient"
+		]
+	},
+	"mixins": [
+		"legit-farmer.mixins.json",
+		{
+			"config": "legit-farmer.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
