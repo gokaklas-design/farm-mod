@@ -13,11 +13,11 @@ jobs:
           java-version: '21'
           distribution: 'microsoft'
 
-      - name: Fix Missing Gradle Wrapper
-        run: |
-          mkdir -p gradle/wrapper
-          wget -O gradle/wrapper/gradle-wrapper.jar https://gradle.org
-          echo "distributionUrl=https\://services.gradle.org/distributions/gradle-8.11.1-bin.zip" > gradle/wrapper/gradle-wrapper.properties
+      # Офіційний інструмент, який сам налаштує Gradle без використання вашого пошкодженого .jar файлу
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          validate-wrappers: false
 
       - name: Make gradlew executable
         run: chmod +x gradlew
