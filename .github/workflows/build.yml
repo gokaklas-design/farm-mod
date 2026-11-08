@@ -6,25 +6,17 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'microsoft'
-
-      # Офіційний інструмент, який сам налаштує Gradle без використання вашого пошкодженого .jar файлу
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          validate-wrappers: false
-
+      - name: Setup Gradle Wrapper
+        run: gradle wrapper --gradle-version 8.11.1
       - name: Make gradlew executable
         run: chmod +x gradlew
-        
       - name: Build with Gradle
         run: ./gradlew build
-        
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
